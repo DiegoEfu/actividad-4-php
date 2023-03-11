@@ -1,0 +1,3 @@
+<!--
+    ELIMINAR MEDICIÓN
+-->
