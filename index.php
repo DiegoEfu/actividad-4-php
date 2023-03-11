@@ -1,3 +1,7 @@
+<?php
+    include('bdd.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +17,45 @@
         <thead>
             <th># Pozo</th>
             <th>Nombre</th>
+            <th>Estado</th>
             <th>Ubicación</th>
             <th>Última Medición</th>
         </thead>
         <tbody>
-            <td>1</td>
-            <td>Nombre</td>
-            <td>Lugar</td>
-            <td>Hoy</td>
+        <?php
+                    
+            $query = "SELECT pozo.id AS id,pozo.nombre AS nombre,st.nombre AS estado_nombre,ubicacion FROM pozo INNER JOIN estado AS st ON pozo.estado = st.id ORDER BY -pozo.id";
+            $result = mysqli_query($conn, $query);
+    
+            while($row = mysqli_fetch_array($result)){?>
+                <tr>
+                    <td>
+                        <?php                                
+                            echo $row['id'];                                
+                        ?>
+                    </td>
+                    <td>
+                        <?php                                
+                            echo $row['nombre'];                             
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                            echo $row['estado_nombre'];
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                            echo $row['ubicacion'];
+                        ?>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-outline-primary">
+                            Ver Mediciones
+                        </a>
+                    </td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
 </body>
