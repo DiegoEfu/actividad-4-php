@@ -23,6 +23,7 @@
 <h3>Medidas del Pozo "<?php echo $_GET['pozo']; ?>"</h3>
     <a href="index.php">Devolverse</a>
     <canvas id="grafica" width="100%" style="max-height: 30vh;"></canvas>
+    <a href="registrar_medicion.php?id=<?php echo $_GET['id_pozo']; ?>&pozo=<?php echo $_GET['pozo']; ?>">Añadir Medición</a>
     <table border="2">
         <thead>
             <th>No.Medida</th>
@@ -81,7 +82,7 @@
             let datosGrafica = undefined;
 
             $.ajax({
-                url: 'datos_grafica.php',
+                url: 'datos_grafica.php?id=<?php echo $_GET['id_pozo']; ?>',
                 method: "GET",
                 async: false,
                 success: function(data){
@@ -92,10 +93,8 @@
                 }
             });
 
-            console.log(Object.keys(datosGrafica));
-
             let myChart = new Chart(canvas, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     datasets: [
                         {
@@ -110,7 +109,7 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Medidas del Pozo',
+                            text: 'Medidas del Pozo "<?php echo $_GET['pozo']; ?>"',
                             position: 'top'
                         },
                         legend: {

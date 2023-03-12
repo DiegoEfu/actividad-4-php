@@ -1,6 +1,6 @@
 <?php
     include('bdd.php');
-    $query = "SELECT fecha,psi FROM medida WHERE pozo = " . 2 . " ORDER BY fecha;";
+    $query = "SELECT fecha,psi FROM medida WHERE pozo = " . $_GET['id'] . " ORDER BY fecha;";
     $result = mysqli_query($conn, $query);
 
     $acc = [];
