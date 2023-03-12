@@ -15,11 +15,13 @@
     <a href="crear_pozo.php">Añadir Pozo</a>
     <table border="2">
         <thead>
-            <th># Pozo</th>
+            <th>No.Pozo</th>
             <th>Nombre</th>
             <th>Estado</th>
             <th>Ubicación</th>
-            <th>Última Medición</th>
+            <th>Mediciones</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </thead>
         <tbody>
         <?php
@@ -50,10 +52,15 @@
                         ?>
                     </td>
                     <td>
-                        <a href="" class="btn btn-outline-primary">
-                            Ver Mediciones
-                        </a>
+                        <form action="ver_mediciones.php" method="get">
+                            <input type="hidden" name="id_pozo" value="<?php echo $row['id']; ?>">
+                            <button name="pozo" value="<?php echo $row['nombre']; ?>" class="btn btn-outline-primary">
+                                Ver Mediciones
+                            </button>
+                        </form>
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php } ?>
         </tbody>
