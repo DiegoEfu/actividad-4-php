@@ -12,7 +12,7 @@
 </head>
 <body>
     <h3>Lista de Pozos</h3>
-    <a href="#">Añadir Pozo</a>
+    <a href="crear_pozo.php">Añadir Pozo</a>
     <table border="2">
         <thead>
             <th># Pozo</th>
