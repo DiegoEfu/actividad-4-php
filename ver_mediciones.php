@@ -67,7 +67,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="" class="btn btn-outline-primary">
+                        <a href="eliminar_medicion.php?id=<?php echo $row['id']; ?>&pozo=<?php echo $_GET['pozo']; ?>&id_pozo=<?php echo $_GET['id_pozo']; ?>" class="btn btn-outline-primary">
                             Eliminar
                         </a>
                     </td>
