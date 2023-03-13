@@ -59,8 +59,12 @@
                             </button>
                         </form>
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <a href="editar_pozo.php?id=<?php echo $row['id'] ?>">Editar</a>
+                    </td>
+                    <td>
+                        <a href="eliminar_pozo.php?id=<?php echo $row['id'] ?>">Eliminar</a>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>
