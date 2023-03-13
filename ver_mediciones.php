@@ -79,12 +79,12 @@
                             ?>
                         </td>
                         <td>
-                            <a href="editar_medicion.php?id=<?php echo $row['id']; ?>&pozo=<?php echo $_GET['pozo']; ?>&id_pozo=<?php echo $_GET['id_pozo']; ?>" class="btn btn-outline-primary">
+                            <a href="editar_medicion.php?id=<?php echo $row['id']; ?>&pozo=<?php echo $_GET['pozo']; ?>&id_pozo=<?php echo $_GET['id_pozo']; ?>" class="btn btn-outline-danger">
                                 Editar
                             </a>
                         </td>
                         <td>
-                            <a href="eliminar_medicion.php?id=<?php echo $row['id']; ?>&pozo=<?php echo $_GET['pozo']; ?>&id_pozo=<?php echo $_GET['id_pozo']; ?>" class="btn btn-outline-primary">
+                            <a href="eliminar_medicion.php?id=<?php echo $row['id']; ?>&pozo=<?php echo $_GET['pozo']; ?>&id_pozo=<?php echo $_GET['id_pozo']; ?>" class="btn btn-outline-danger">
                                 Eliminar
                             </a>
                         </td>
@@ -117,7 +117,7 @@
                     datasets: [
                         {
                             data: Object.values(datosGrafica),
-                            backgroundColor: ['#00F',]
+                            backgroundColor: ['#F00',]
                         }
                     ],
                     labels: Object.keys(datosGrafica)
