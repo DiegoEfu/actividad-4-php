@@ -46,7 +46,6 @@
                 <th>No.Medida</th>
                 <th>Fecha</th>
                 <th>PSI</th>
-                <th>Registrada Por</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </thead>
@@ -71,11 +70,6 @@
                         <td>
                             <?php
                                 echo $row['psi'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['creado_por'];
                             ?>
                         </td>
                         <td>

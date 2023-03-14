@@ -1,9 +1,8 @@
 <?php
     include('bdd.php');
-    $query = "INSERT INTO medida(fecha,psi,creado_por,pozo) VALUES(
+    $query = "INSERT INTO medida(fecha,psi,pozo) VALUES(
         '" . $_POST["fecha"] ."',
         '" . $_POST["psi"] . "',
-        " . "1" . ",
         " .  $_POST['id_pozo'] . "
     )";
     $result = mysqli_query($conn, $query);
