@@ -34,7 +34,7 @@
             <input class="form-control" type="datetime-local" name="fecha" required>
 
             <label for="psi">Medición en PSI:</label>
-            <input class="form-control" type="number" name="psi" id="psi" step="0.01" required>
+            <input class="form-control" type="number" name="psi" max="99999999.99" id="psi" step="0.01" required>
 
             <div class="d-flex justify-content-center mt-2">
                 <a href="ver_mediciones.php?pozo=<?php echo $_GET['pozo']; ?>&id_pozo=<?php echo $_GET['id']; ?>" class="btn btn-secondary">Regresar</a>

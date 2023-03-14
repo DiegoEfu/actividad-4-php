@@ -1,6 +1,6 @@
 <?php
     include('bdd.php');
-    $query = "SELECT fecha,psi FROM medida WHERE pozo = " . $_GET['id'] . " ORDER BY fecha;";
+    $query = "SELECT fecha,psi FROM medida WHERE fecha >= '" . $_GET['fecha_min'] . "' AND fecha <= '" . $_GET['fecha_max'] . "' AND pozo = " . $_GET['id'] . " ORDER BY fecha ;";
     $result = mysqli_query($conn, $query);
 
     $acc = [];

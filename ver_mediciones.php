@@ -34,12 +34,27 @@
         <img src="img/pdvsa-logo.png" width="100px" alt="logo de PDVSA">
         <h3>Mediciones del Pozo "<?php echo $_GET['pozo']; ?>"</h3>
     </div>
-    <canvas id="grafica" width="100%" style="max-height: 30vh; min-height: 30vh;" class="bg-white m-3"></canvas>
+    <canvas hidden id="grafica" width="100%" style="max-height: 30vh; min-height: 30vh;" class="bg-white m-3"></canvas>
     
     <div class="m-3 d-flex flex-end flex-column">
-        <div>
-            <a href="index.php" class="btn btn-secondary">Regresar</a>
-            <a class="btn btn-danger" href="registrar_medicion.php?id=<?php echo $_GET['id_pozo']; ?>&pozo=<?php echo $_GET['pozo']; ?>">Añadir Medición</a>
+        <div class="w-100 d-flex justify-content-between">
+            <div>
+                <a href="index.php" class="btn btn-secondary">Regresar</a>
+                <a class="btn btn-danger" href="registrar_medicion.php?id=<?php echo $_GET['id_pozo']; ?>&pozo=<?php echo $_GET['pozo']; ?>">Añadir Medición</a>
+            </div>
+            <form id="grafica_form" class="d-flex" style="max-height: 50px;">
+                <div class="d-flex flex-column text-white">
+                    <small>Desde:</small>
+                    <input type="datetime-local" class="form-control" required id="fecha_min"> 
+                </div>
+                
+                <div class="d-flex flex-column text-white">                
+                    <small>Hasta:</small>
+                    <input type="datetime-local" class="form-control" required id="fecha_max"> 
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="height: 50px;">Generar Gráfica</button>
+            </form>
         </div>        
         <table class="table table-hover">
             <thead class="table-dark">
@@ -89,15 +104,18 @@
     </div>
 
     <script>
-        $(document).ready(() => {
+        let chart = null;
+        $('#grafica_form').submit((e) => {
+            e.preventDefault();
             let canvas = document.getElementById('grafica').getContext('2d');
             let datosGrafica = undefined;
 
             $.ajax({
-                url: 'datos_grafica.php?id=<?php echo $_GET['id_pozo']; ?>',
+                url: `datos_grafica.php?id=<?php echo $_GET['id_pozo']; ?>&fecha_max=${$('#fecha_max').val()}&fecha_min=${$('#fecha_min').val()}`,
                 method: "GET",
                 async: false,
                 success: function(data){
+                    console.log(data);
                     datosGrafica = JSON.parse(data);
                 },
                 error: function(error){
@@ -105,7 +123,11 @@
                 }
             });
 
-            let myChart = new Chart(canvas, {
+            $('#grafica').removeAttr('hidden');
+            if(chart)
+                chart.destroy();
+
+            chart = new Chart(canvas, {
                 type: 'bar',
                 data: {
                     datasets: [
@@ -129,7 +151,7 @@
                         }
                     }        
                 }
-            })
+            });
         });
     </script>
 </body>
