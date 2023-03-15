@@ -23,7 +23,7 @@
 <body>
     <div class="d-flex justify-content-center align-items-center bg-dark text-white flex-column">
         <img src="img/pdvsa-logo.png" width="100px" alt="logo de PDVSA">
-        <h3>Crear Pozo</h3>
+        <h3>Registrar Medición</h3>
     </div>
 
     <div class="m-3">
